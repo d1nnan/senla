@@ -1,0 +1,282 @@
+body {
+   background: url("imgs/taking_notes.png") no-repeat;
+   background-position: top 218px left 531px;
+}
+
+.state {
+   display: flex;
+}
+
+.container {
+   position: relative;
+   display: flex;
+   left: 1.6%;
+   right: 86.32%;
+   top: 1.95%;
+   bottom: 93.75%;
+}
+
+.container img {
+   height: 44px;
+   width: 174px;
+   left: 23px;
+   top: 20px;
+   border-radius: 0px;
+}
+
+.search-form {
+   display: flex;
+   position: relative;
+   left: 15.07%;
+   right: 44.51%;
+   top: 2.15%;
+   bottom: 93.95%;
+   height: 40px;
+   width: 582px;
+   left: 0px;
+   top: 0px;
+   border-radius: 4px;
+}
+
+.icon {
+   background: url("imgs/Search.png") no-repeat;
+   height: 12px;
+   width: 12px;
+   left: 25px;
+   top: 14px;
+   border-radius: 0px;
+}
+
+.search-form i {
+   position: relative;
+   right: 0;
+   top: 5;
+   padding: 10px, 13px;
+}
+
+
+.search-form input {
+   box-sizing: border-box;
+   padding-left: 30px;
+   height: 40px;
+   width: 582px;
+   border-radius: 4px;
+
+   background: linear-gradient(0deg, #F6F6F6, #F6F6F6), #FEFEFE;
+   border: 1px solid #E2E2E2;
+   box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.1);
+   border-radius: 4px;
+}
+
+input.search-task::placeholder {
+   position: relative;
+   margin-left: 30px;
+   left: 30px;
+   right: 10px;
+   top: 0px;
+   bottom: 5px;
+
+   font-family: 'Roboto';
+   font-style: normal;
+   font-weight: 500;
+   font-size: 16px;
+   line-height: 19px;
+
+   color: #000000;
+
+   opacity: 0.3;
+}
+
+span {
+   width: 175px;
+   text-align: center;
+}
+
+.divider {
+   height: 1px;
+   width: 739px;
+   margin-top: 33px;
+   margin-left: 45px;
+   left: 0%;
+   right: 0%;
+   top: 0%;
+   bottom: 98%;
+
+   background: #E2E2E2;
+   box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.05);
+}
+
+.solid {
+   height: 4px;
+   width: 175px;
+   margin-top: 33px;
+   margin-left: 0px;
+   background: #2F80ED;
+}
+
+.state-elem-chosen {
+   height: 50px;
+   width: 175px;
+   border-radius: 0px;
+
+   left: 0%;
+   right: 76.94%;
+   top: 0%;
+   bottom: 0%;
+   font-family: 'Roboto';
+   font-style: normal;
+   font-weight: 900;
+   font-size: 16px;
+   line-height: 19px;
+   align-items: center;
+   text-align: center;
+   margin-left: 44px;
+   margin-top: 19px;
+
+   color: #53565A;
+
+   border-top: 3px;
+   border-top-color: #2F80ED;
+
+}
+
+.state-elem-not-act {
+   height: 50px;
+   width: 175px;
+   left: 0%;
+   right: 0%;
+   top: 40%;
+   bottom: 0%;
+
+   font-family: 'Roboto';
+   font-style: normal;
+   font-weight: 900;
+   font-size: 16px;
+   line-height: 19px;
+   text-align: center;
+   align-items: center;
+   text-align: center;
+   margin-left: 1px;
+   margin-top: 19px;
+
+
+   color: #53565A;
+   opacity: 0.5;
+}
+
+.state-elem-not-done {
+   height: 50px;
+   width: 175px;
+   left: 0%;
+   right: 0%;
+   top: 40%;
+   bottom: 0%;
+
+   font-family: 'Roboto';
+   font-style: normal;
+   font-weight: 900;
+   font-size: 16px;
+   line-height: 19px;
+   text-align: center;
+   align-items: center;
+   text-align: center;
+   margin-left: 1px;
+   margin-top: 19px;
+
+   color: #53565A;
+   opacity: 0.5;
+}
+
+.textarea label {
+   width: 53px;
+   height: 16px;
+   left: 0px;
+   top: 0px;
+
+   font-family: 'Salesforce Sans';
+   font-size: 12px;
+   line-height: 15px;
+   margin-left: 44px;
+   color: #706E6B;
+}
+
+.textarea textarea {
+   box-sizing: border-box;
+   height: 90px;
+   width: 759px;
+   left: 0px;
+   top: 19px;
+
+   left: 0%;
+   right: 0%;
+   top: 19px;
+   bottom: 0px;
+
+   background: #FFFFFF;
+   border: 1px solid #DDDBDA;
+   border-radius: 4px;
+   margin-left: 44px;
+}
+
+.textarea button {
+   height: 36px;
+   width: 191px;
+   left: 16px;
+   top: 10px;
+   border-radius: nullpx;
+   background: #2F80ED;
+   border: #2F80ED;
+   font-family: 'Roboto';
+   font-style: normal;
+   font-weight: 500;
+   font-size: 14px;
+   line-height: 16px;
+   text-align: center;
+   letter-spacing: 0.75px;
+   text-transform: uppercase;
+   color: #FFFFFF;
+   margin-left: 620px;
+}
+
+p {
+   height: 109px;
+   width: 763px;
+   border-radius: 4px;
+   box-sizing: border-box;
+   left: 0%;
+   right: 0%;
+   top: 0%;
+   bottom: 0%;
+   font-family: 'Roboto';
+   font-style: normal;
+   font-weight: 400;
+   font-size: 16px;
+   line-height: 19px;
+   padding-top: 16px;
+   padding-left: 23px;
+   margin-left: 44px;
+
+   background: #FFFFFF;
+   box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1);
+   border-radius: 4px;
+   color: #53565A;
+}
+
+.task1 p {
+   margin-top: 23px;
+   text-decoration-line: line-through;
+}
+
+.task2 p {
+   font-weight: 700;
+
+}
+
+.task2 img {
+   height: 18.984375px;
+   width: 19.96875px;
+}
+
+.task5 p {
+   text-decoration-line: line-through;
+}
