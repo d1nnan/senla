@@ -5,15 +5,15 @@ body {
 
 header {
    width: 760px;
-   margin: 20px 40px 30px;
+   margin: 20px 20px 30px;
 }
 
 main {
-   margin: 0 0 0 60px;
+   margin: 0 0 0 40px;
    width: 760px;
 }
 
-.state {
+.btn-state {
    display: flex;
    border-top: 1px solid #E2E2E2;
 }
@@ -119,9 +119,10 @@ span {
 .state-elem:focus {
    opacity: 0.9;
    border-top: 5px solid #2F80ED;
+   outline: none;
 }
 
-.textarea label {
+.task-input label {
    margin-bottom: 5px;
 
    font-family: 'Salesforce Sans';
@@ -130,7 +131,7 @@ span {
    color: #706E6B;
 }
 
-.textarea textarea {
+.task-input textarea {
    box-sizing: border-box;
    height: 90px;
    width: 759px;
@@ -141,7 +142,7 @@ span {
    outline: none;
 }
 
-.textarea textarea:hover {
+.task-input textarea:hover {
    box-sizing: border-box;
 
    border: 1px solid rgba(47, 128, 237, 0.5);
@@ -150,7 +151,7 @@ span {
    background: #FFFFFF;
 }
 
-.textarea textarea:focus {
+.task-input textarea:focus {
    box-sizing: border-box;
    border-radius: 4px;
    background: #FFFFFF;
@@ -159,7 +160,7 @@ span {
    box-shadow: 1px 1px 2px 0 #2F80ED;
 }
 
-.textarea button {
+.task-input button {
    height: 36px;
    width: 191px;
    background: #2F80ED;
@@ -177,20 +178,12 @@ span {
    float: right;
 }
 
-.textarea button:hover {
+.task-input button:hover {
    box-sizing: border-box;
    border: 1px solid rgba(47, 128, 237, 0.5);
-   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+   box-shadow: 1px 4px 20px rgba(0, 0, 0, 0.1);
    background: #2F80ED;
-   opacity: 0.7;
-}
-
-.textarea button:hover {
-   box-sizing: border-box;
-
-   border: 1px solid rgba(47, 128, 237, 0.5);
-   box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1);
-   border-radius: 4px;
+   opacity: 0.9;
 }
 
 .task {
