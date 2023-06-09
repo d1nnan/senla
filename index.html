@@ -6,13 +6,18 @@
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Document</title>
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
+      rel="stylesheet">
+   <link rel="stylesheet" href="normalize.css">
    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
    <header>
       <div class="container">
-         <img src="imgs/Color.jpg">
+         <img src="imgs/Color.svg">
          <div class="search-form">
             <i class="icon" aria-hidden="true"></i>
             <input class="search-task" type="text" placeholder="Search task to do">
@@ -21,43 +26,49 @@
    </header>
 
    <main>
-      <div class="divider">
-         <hr class="solid">
-      </div>
-      <div class="submenu">
-         <div class="state">
-            <div class="state-elem-chosen">
+
+      <div class="state">
+         <div class="btn-check">
+            <button type="button" class="state-elem">
                <span>All</span>
-            </div>
-            <div class="state-elem-not-act">
+            </button>
+         </div>
+         <div class="btn-check">
+            <button type="button" class="state-elem ">
                <span>Active</span>
-            </div>
-            <div class="state-elem-not-done">
+            </button>
+         </div>
+         <div class="btn-check">
+            <button type="button" class="state-elem">
                <span>Done</span>
-            </div>
+            </button>
          </div>
       </div>
+
       <form class="textarea">
-         <label>New task <br><textarea></textarea></label><br>
-         <button type="submit">Add</button>
+         <label>New task</label>
+         <textarea></textarea>
+         <div style="display: flex; justify-content: flex-end;">
+            <button type="button">Add</button>
+         </div>
+
       </form>
-      <div class="tasks">
-         <div class="task1">
-            <p>Попить чайку</p>
-         </div>
-         <div class="task2">
-            <p><img src="imgs/star_border.png"> Прочитать, что такое JAVASCRIPT</p>
-         </div>
-         <div class="task3">
-            <p>Отправить тестовое задание на курсы SENLA до 1 марта</p>
-         </div>
-         <div class="task4">
-            <p>Записаться на курсы по REACT JS от SENLA</p>
-         </div>
-         <div class="task5">
-            <p>Проснуться</p>
-         </div>
+      <div class="task task1">
+         Попить чайку
       </div>
+      <div class="task task2">
+         <img src="imgs/star_border.svg"> Прочитать, что такое JAVASCRIPT
+      </div>
+      <div class="task task3">
+         Отправить тестовое задание на курсы SENLA до 1 марта
+      </div>
+      <div class="task task4">
+         Записаться на курсы по REACT JS от SENLA
+      </div>
+      <div class="task task5">
+         Проснуться
+      </div>
+
    </main>
 </body>
 
