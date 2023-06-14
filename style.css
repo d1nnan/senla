@@ -13,15 +13,11 @@ main {
    width: 760px;
 }
 
-.btn-state {
+.tabs-menu {
    display: flex;
    border-top: 1px solid #E2E2E2;
 }
 
-.btn-check:hover {
-   box-sizing: border-box;
-   border: 1px solid rgba(47, 128, 237, 0.5);
-}
 
 .container {
    position: relative;
@@ -85,12 +81,7 @@ input.search-task:focus {
    box-shadow: 1px 1px 2px 0 #2F80ED;
 }
 
-span {
-   width: 175px;
-   text-align: center;
-}
-
-.state-elem {
+.tabs-menu__btn {
    height: 50px;
    width: 175px;
    border: 0px;
@@ -106,20 +97,20 @@ span {
    background-color: transparent;
    color: #53565A;
    opacity: 0.5;
-
+   outline: none;
+   border-top: 5px solid transparent;
+   text-align: center;
+   display: block;
 }
 
-.btn-check:focus {
-   box-sizing: border-box;
-   box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1);
-   border-radius: 4px;
-   background: transparent;
-}
-
-.state-elem:focus {
+.tabs-menu__btn:hover {
    opacity: 0.9;
    border-top: 5px solid #2F80ED;
-   outline: none;
+}
+
+.tabs-menu__btn_selected {
+   opacity: 0.9;
+   border-top: 5px solid #2F80ED;
 }
 
 .task-input label {
@@ -176,6 +167,8 @@ span {
    color: #FFFFFF;
    margin-left: auto;
    float: right;
+
+   margin-bottom: 20px;
 }
 
 .task-input button:hover {
@@ -186,7 +179,7 @@ span {
    opacity: 0.9;
 }
 
-.task {
+.task-container__task {
    height: 109px;
    width: 763px;
    border-radius: 4px;
@@ -205,26 +198,26 @@ span {
    color: #53565A;
 }
 
-.task:hover {
+.task-container__task:hover {
    border: 1px solid rgba(47, 128, 237, 0.5);
    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1);
    border-radius: 4px;
 }
 
-.task1 {
+.task__task1 {
    margin-top: 23px;
    text-decoration-line: line-through;
 }
 
-.task2 {
+.task__task2 {
    font-weight: 700;
 }
 
-.task2 img {
+.task__task2 img {
    height: 20px;
    width: 20px;
 }
 
-.task5 {
+.task__task5 {
    text-decoration-line: line-through;
 }
