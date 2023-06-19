@@ -1,27 +1,16 @@
 const buttons = document.querySelectorAll('.tabs-menu__btn')
 const addButton = document.querySelector('.task-input__btn')
 const textArea = document.querySelector('.task-input__txt-area')
-let deleteButtons = document.querySelectorAll('.tasks-item__btn-delete')
+const deleteButtons = document.querySelectorAll('.tasks-item__btn-delete')
 const tasksList = document.querySelectorAll('.tasks-item')
 const tasks = document.querySelector('.tasks')
 
 let list = [
    {
+      id: String(new Date().valueOf()),
       name: 'пить чай'
    }
 ]
-
-buttons.forEach(button => {
-   button.addEventListener('click', () => {
-      unselect()
-      select(button)
-   })
-})
-
-addButton.addEventListener('click', () => {
-   addTask(textArea.value)
-})
-
 
 function unselect() {
    buttons.forEach(button => {
@@ -32,17 +21,20 @@ function select(button) {
    button.classList.add('tabs-menu__btn_selected')
 }
 
-function addToLocalStorage(todos) {
-   localStorage.setItem('todos', JSON.stringify(todos))
-   outputTask(todos)
-}
-
 function getFromLocalStorage() {
-   const ref = localStorage.getItem('todos')
-   if (ref) {
-      todos = JSON.parse(ref)
+   if (localStorage.getItem('todos')) {
+      // const ref = localStorage.getItem('todos')
+      let todos = JSON.parse(localStorage.getItem('todos'))
       outputTask(todos)
    }
+   else {
+      ref = []
+   }
+}
+
+function addToLocalStorage(todos) {
+   localStorage.setItem('todos', JSON.stringify(todos))
+   getFromLocalStorage()
 }
 
 function outputTask(someList) {
@@ -55,19 +47,20 @@ function outputTask(someList) {
       btnDelete.setAttribute('class', 'tasks-item__btn-delete')
       taskItem.appendChild(btnDelete)
       document.querySelector('.tasks').appendChild(taskItem)
-      // tasksList.append(taskItem)
-
+      taskItem.setAttribute('data-key', item.id)
    })
-   console.log(someList)
+   // console.log(someList)
 }
 
 function init() {
-   outputTask(list)
+   getFromLocalStorage()
 }
+
 function addTask(task) {
-   if (task !== '') {
+   if (task.trim() !== '') {
       textArea.value = ''
       taska = {
+         id: String(new Date().valueOf()),
          name: task
       }
       list.unshift(taska)
@@ -83,27 +76,38 @@ function addTask(task) {
    }
 }
 
-// function deleteTask() {
+function deleteTask(id) {
+   list = list.filter((todo) => {
+      // console.log(todo.id, id)
+      return todo.id !== id
+   })
+   addToLocalStorage(list)
+   // console.log(list)
+}
 
-// }
+tasks.addEventListener('click', (event) => {
+   if (event.target.classList.contains('tasks-item__btn-delete')) {
+      deleteTask(event.target.parentElement.getAttribute('data-key'))
+      // console.log(event.target.parentElement.getAttribute('data-key'))
+   }
+})
 
-deleteButtons.forEach(button => {
-   button.addEventListener('click', (event) => {
-      console.log(event)
-      event.target.parentElement.remove()
+tasks.addEventListener('click', (event) => {
+   // console.log(event)
+   // console.log(event.target.getAttribute('data-key'))
+   event.target.classList.toggle('tasks-item_checked')
+   // checkTask(event.target.getAttribute('data-key'))
+})
+
+buttons.forEach(button => {
+   button.addEventListener('click', () => {
+      unselect()
+      select(button)
    })
 })
 
-tasksList.forEach(task => {
-   task.addEventListener('click', (event) => {
-      console.log(event)
-      task.classList.add('tasks-item_checked')
-   })
-   // for (let i = 0; i < list.length; i++) {
-   //    const task = list[i]
-   //    task.addEventListener('click', () => {
-   //       console.log('clicked')
-   //       task.classList.add('tasks-item_checked')
+addButton.addEventListener('click', () => {
+   addTask(textArea.value)
 })
 
 init()
