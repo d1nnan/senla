@@ -4,13 +4,18 @@ const textArea = document.querySelector('.task-input__txt-area')
 const deleteButtons = document.querySelectorAll('.tasks-item__btn-delete')
 const tasksList = document.querySelectorAll('.tasks-item')
 const tasks = document.querySelector('.tasks')
+const searchBtn = document.querySelector('.search-form__btn')
+const searchInput = document.querySelector('.search-task')
 
-let list = [
+let todoList = [
    {
       id: String(new Date().valueOf()),
-      name: 'пить чай'
+      name: 'пить чай',
+      checked: false
    }
 ]
+
+let foundTask = []
 
 function unselect() {
    buttons.forEach(button => {
@@ -23,23 +28,17 @@ function select(button) {
 
 function getFromLocalStorage() {
    if (localStorage.getItem('todos')) {
-      // const ref = localStorage.getItem('todos')
-      let todos = JSON.parse(localStorage.getItem('todos'))
-      outputTask(todos)
-   }
-   else {
-      ref = []
+      todoList = JSON.parse(localStorage.getItem('todos'))
    }
 }
 
-function addToLocalStorage(todos) {
-   localStorage.setItem('todos', JSON.stringify(todos))
-   getFromLocalStorage()
+function setToLocalStorage() {
+   localStorage.setItem('todos', JSON.stringify(todoList))
 }
 
-function outputTask(someList) {
+function renderTasks(listToRender) {
    tasks.innerHTML = ""
-   someList.forEach(function (item) {
+   listToRender.forEach(function (item) {
       const taskItem = document.createElement('div')
       taskItem.setAttribute('class', 'tasks-item')
       taskItem.innerHTML = `${item.name}`
@@ -48,28 +47,27 @@ function outputTask(someList) {
       taskItem.appendChild(btnDelete)
       document.querySelector('.tasks').appendChild(taskItem)
       taskItem.setAttribute('data-key', item.id)
+      if (item.checked) {
+         taskItem.classList.add('tasks-item_checked')
+      }
    })
-   // console.log(someList)
 }
 
 function init() {
    getFromLocalStorage()
+   renderTasks(todoList)
 }
 
 function addTask(task) {
    if (task.trim() !== '') {
       textArea.value = ''
-      taska = {
+      const newTask = {
          id: String(new Date().valueOf()),
-         name: task
+         name: task,
+         checked: false
       }
-      list.unshift(taska)
-      console.log('pushed')
-      for (let i = 0; i < list.length; i++) {
-         const element = list[i]
-         console.log(element)
-      }
-      addToLocalStorage(list)
+      todoList.unshift(newTask)
+
    }
    else {
       console.log('enter task')
@@ -77,27 +75,47 @@ function addTask(task) {
 }
 
 function deleteTask(id) {
-   list = list.filter((todo) => {
-      // console.log(todo.id, id)
+   todoList = todoList.filter((todo) => {
       return todo.id !== id
    })
-   addToLocalStorage(list)
-   // console.log(list)
+}
+
+function checkTask(id) {
+   todoList.forEach((task) => {
+      if (task.id === id) {
+         task.checked = !task.checked
+      }
+   })
+}
+
+function searchTask(taskToFind) {
+   for (let i = 0; i < todoList.length; i++) {
+      if (todoList[i].name === taskToFind) {
+         foundTask = todoList.filter((task) => {
+            return taskToFind === task.name
+         })
+      }
+   }
+
 }
 
 tasks.addEventListener('click', (event) => {
-   if (event.target.classList.contains('tasks-item__btn-delete')) {
-      deleteTask(event.target.parentElement.getAttribute('data-key'))
-      // console.log(event.target.parentElement.getAttribute('data-key'))
+   const isBtnDelete = event.target.classList.contains('tasks-item__btn-delete')
+   if (isBtnDelete) {
+      const taskId = event.target.parentElement.getAttribute('data-key')
+      deleteTask(taskId)
+      setToLocalStorage()
+      renderTasks()
+   }
+   const isTaskItem = event.target.classList.contains('tasks-item')
+   if (isTaskItem) {
+      const taskId = event.target.getAttribute('data-key')
+      checkTask(taskId)
+      setToLocalStorage()
+      renderTasks(todoList)
    }
 })
 
-tasks.addEventListener('click', (event) => {
-   // console.log(event)
-   // console.log(event.target.getAttribute('data-key'))
-   event.target.classList.toggle('tasks-item_checked')
-   // checkTask(event.target.getAttribute('data-key'))
-})
 
 buttons.forEach(button => {
    button.addEventListener('click', () => {
@@ -108,6 +126,14 @@ buttons.forEach(button => {
 
 addButton.addEventListener('click', () => {
    addTask(textArea.value)
+   setToLocalStorage()
+   renderTasks(todoList)
+})
+
+searchBtn.addEventListener('click', () => {
+   searchTask(searchInput.value)
+   setToLocalStorage()
+   renderTasks(foundTask)
 })
 
 init()
