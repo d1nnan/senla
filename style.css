@@ -5,7 +5,7 @@ body {
 
 header {
    width: 760px;
-   margin: 20px 20px 30px;
+   margin: 20px 40px 30px;
 }
 
 main {
@@ -40,6 +40,19 @@ main {
    flex-grow: 1;
 }
 
+.search-form__btn {
+   padding: 0 10px;
+   height: 40px;
+   background: #2F80ED;
+   border: #2F80ED;
+   font-family: 'Roboto';
+   font-weight: 500;
+   font-size: 14px;
+   text-transform: uppercase;
+   color: #FFFFFF;
+   cursor: pointer;
+}
+
 .icon {
    background: url("imgs/Search.svg") no-repeat;
    height: 12px;
@@ -57,8 +70,9 @@ main {
    box-sizing: border-box;
    padding-left: 30px;
    height: 40px;
-   width: 582px;
+   flex-grow: 1;
    border-radius: 4px;
+   margin-right: 15px;
    background: linear-gradient(0deg, #F6F6F6, #F6F6F6), #FEFEFE;
    border: 1px solid #E2E2E2;
    box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.1);
@@ -206,7 +220,11 @@ input.search-task:focus {
 
 }
 
-.tasks-item_checked {
+.tasks-item__text {
+   flex-grow: 1;
+}
+
+.tasks-item_checked .tasks-item__text {
    text-decoration-line: line-through;
 }
 
@@ -219,10 +237,6 @@ input.search-task:focus {
    width: 20px;
 }
 
-.task__task5 {
-   text-decoration-line: line-through;
-}
-
 .tasks-item__btn-delete {
    background: url(imgs/delete.svg) no-repeat center;
    height: 40px;
@@ -233,10 +247,39 @@ input.search-task:focus {
    justify-content: center;
    align-items: center;
    cursor: pointer;
-   border: 2px solid rgb(48, 48, 48);
+   margin-left: 20px;
 
 }
 
 .tasks-item__btn-delete:hover {
    transition-duration: 0.3s;
 }
+
+.tasks-item__btn-marker {
+   border-radius: 25px;
+   width: 183px;
+   height: 36px;
+   background: #1ac97d;
+   border: #1ac97d;
+   outline: none;
+   color: #FFFFFF;
+
+}
+
+.tasks-item__star {
+   background: url(imgs/star_border.svg) no-repeat center;
+   height: 20px;
+   width: 20px;
+   margin-right: 4px;
+   outline: none;
+}
+
+/* 
+.tasks-item__btn-marker_imp {
+   border-radius: 25px;
+   width: 183px;
+   height: 36px;
+   background: rgba(255, 255, 255, 0.08);
+   border: #1ac97d;
+   outline: none;
+} */
