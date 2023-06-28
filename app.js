@@ -7,6 +7,9 @@ const searchInput = document.querySelector('.search-task')
 const allBtn = document.querySelector('.tabs-menu__btn-all')
 const importantBtn = document.querySelector('.tabs-menu__btn-important')
 const doneBtn = document.querySelector('.tabs-menu__btn-done')
+const loaderWrapper = document.querySelector('.loader-wrapper')
+
+let filterActive = false
 
 let todoList = [
    {
@@ -17,17 +20,14 @@ let todoList = [
    }
 ]
 
-let foundTask = []
-
-let importantList = []
-
-let doneList = []
+let filteredTodoList = []
 
 function unselect() {
    buttons.forEach(button => {
       button.classList.remove('tabs-menu__btn_selected')
    })
 }
+
 function select(button) {
    button.classList.add('tabs-menu__btn_selected')
 }
@@ -42,7 +42,8 @@ function setToLocalStorage() {
    localStorage.setItem('todos', JSON.stringify(todoList))
 }
 
-function renderTasks(listToRender) {
+function renderTasks() {
+   const listToRender = filterActive ? filteredTodoList : todoList
    tasks.innerHTML = ""
    listToRender.forEach(function (item) {
       const taskItem = document.createElement('div')
@@ -50,7 +51,7 @@ function renderTasks(listToRender) {
       document.querySelector('.tasks').appendChild(taskItem)
 
       const taskText = document.createElement('div')
-      const starImg = document.createElement('img')
+      const starImg = document.createElement('div')
       taskItem.appendChild(taskText)
 
       taskText.setAttribute('class', 'tasks-item__text')
@@ -85,7 +86,19 @@ function renderTasks(listToRender) {
 
 function init() {
    getFromLocalStorage()
-   renderTasks(todoList)
+   renderTasks()
+   setTimeout(() => {
+      hideLoader()
+   }, 2000)
+}
+
+function showLoader() {
+   loaderWrapper.classList.remove('loader-wrapper_hidden')
+}
+
+function hideLoader() {
+   loaderWrapper.classList.add('loader-wrapper_hidden')
+
 }
 
 function addTask(task) {
@@ -129,23 +142,23 @@ function changeMarker(id) {
 
 function searchTask(taskToFind) {
    if (taskToFind !== '') {
-      foundTask = todoList.filter((task) => {
+      filteredTodoList = todoList.filter((task) => {
          return task.name.includes(taskToFind)
       })
    }
    else {
-      foundTask = todoList
+      filteredTodoList = todoList
    }
 }
 
 function filterImportant() {
-   importantList = todoList.filter((task) => {
+   filteredTodoList = todoList.filter((task) => {
       return task.important
    })
 }
 
 function filterDone() {
-   doneList = todoList.filter((task) => {
+   filteredTodoList = todoList.filter((task) => {
       return task.checked
    })
 
@@ -157,25 +170,25 @@ tasks.addEventListener('click', (event) => {
       const taskId = event.target.parentElement.getAttribute('data-key')
       deleteTask(taskId)
       setToLocalStorage()
-      renderTasks(todoList)
+      renderTasks()
    }
    const isTaskItem = event.target.classList.contains('tasks-item')
    if (isTaskItem) {
       const taskId = event.target.getAttribute('data-key')
       checkTask(taskId)
       setToLocalStorage()
-      renderTasks(todoList)
+      renderTasks()
    }
 
    const isMarked = event.target.classList.contains('tasks-item__btn-marker')
    if (isMarked) {
       const taskId = event.target.parentElement.getAttribute('data-key')
       changeMarker(taskId)
+      filterImportant()
       setToLocalStorage()
-      renderTasks(todoList)
+      renderTasks()
    }
 })
-
 
 buttons.forEach(button => {
    button.addEventListener('click', () => {
@@ -185,28 +198,35 @@ buttons.forEach(button => {
 })
 
 addButton.addEventListener('click', () => {
-   addTask(textArea.value)
-   setToLocalStorage()
-   renderTasks(todoList)
+   showLoader()
+   setTimeout(() => {
+      hideLoader()
+      addTask(textArea.value)
+      setToLocalStorage()
+      renderTasks()
+   }, 2000)
 })
 
 searchBtn.addEventListener('click', () => {
    searchTask(searchInput.value.trim())
-   renderTasks(foundTask)
-})
-
-importantBtn.addEventListener('click', () => {
-   filterImportant()
-   renderTasks(importantList)
+   renderTasks()
 })
 
 allBtn.addEventListener('click', () => {
-   renderTasks(todoList)
+   filterActive = false
+   renderTasks()
+})
+
+importantBtn.addEventListener('click', () => {
+   filterActive = true
+   filterImportant()
+   renderTasks()
 })
 
 doneBtn.addEventListener('click', () => {
+   filterActive = true
    filterDone()
-   renderTasks(doneList)
+   renderTasks()
 })
 
 init()

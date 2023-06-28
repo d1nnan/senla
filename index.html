@@ -15,42 +15,51 @@
 </head>
 
 <body>
-   <header>
-      <div class="container">
-         <img src="imgs/Color.svg" alt="senla">
-         <div class="search-form">
-            <i class="icon" aria-hidden="true"></i>
-            <input class="search-task" type="text" placeholder="Search task to do">
-            <button class="search-form__btn" type="button">Search</button>
+   <div class="main-container">
+
+      <header>
+         <div class="container">
+            <img src="imgs/Color.svg" alt="senla">
+            <div class="search-form">
+               <i class="icon" aria-hidden="true"></i>
+               <input class="search-task" type="text" placeholder="Search task to do">
+               <button class="search-form__btn" type="button">Search</button>
+            </div>
          </div>
-      </div>
-   </header>
+      </header>
 
-   <main>
-      <div class="tabs-menu">
-         <button type="button" class="tabs-menu__btn tabs-menu__btn-all" autofocus>
-            All
-         </button>
-         <button type="button" class="tabs-menu__btn tabs-menu__btn-important">
-            Important
-         </button>
-         <button type="button" class="tabs-menu__btn tabs-menu__btn-done">
-            Done
-         </button>
-      </div>
 
-      <form class="task-input">
-         <label>New task</label>
-         <textarea class="task-input__txt-area"></textarea>
-         <div style="display: flex; justify-content: flex-end;">
-            <button type="button" class="task-input__btn">Add</button>
+      <main>
+         <div class="tabs-menu">
+            <button type="button" class="tabs-menu__btn tabs-menu__btn-all" autofocus>
+               All
+            </button>
+            <button type="button" class="tabs-menu__btn tabs-menu__btn-important">
+               Important
+            </button>
+            <button type="button" class="tabs-menu__btn tabs-menu__btn-done">
+               Done
+            </button>
          </div>
-      </form>
 
-      <div class="tasks">
+         <form class="task-input">
+            <label>New task</label>
+            <textarea class="task-input__txt-area"></textarea>
+            <div style="display: flex; justify-content: flex-end;">
+               <button type="button" class="task-input__btn">Add</button>
+            </div>
+         </form>
+         <div class="tasks-wrapper">
+            <div class="tasks">
+            </div>
+
+         </div>
+      </main>
+
+      <div class="loader-wrapper">
+         <span class="loader"></span>
       </div>
-
-   </main>
+   </div>
 </body>
 <script src="app.js"></script>
 

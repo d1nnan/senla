@@ -3,14 +3,14 @@ body {
    background-position: top 218px left 531px;
 }
 
-header {
+header {}
+
+main {}
+
+.main-container {
+   position: relative;
    width: 760px;
    margin: 20px 40px 30px;
-}
-
-main {
-   margin: 0 0 0 40px;
-   width: 760px;
 }
 
 .tabs-menu {
@@ -194,8 +194,7 @@ input.search-task:focus {
 }
 
 .tasks-item {
-   height: 109px;
-   width: 763px;
+   min-height: 109px;
    border-radius: 4px;
    box-sizing: border-box;
 
@@ -248,6 +247,7 @@ input.search-task:focus {
    align-items: center;
    cursor: pointer;
    margin-left: 20px;
+   flex-shrink: 0;
 
 }
 
@@ -263,6 +263,7 @@ input.search-task:focus {
    border: #1ac97d;
    outline: none;
    color: #FFFFFF;
+   flex-shrink: 0;
 
 }
 
@@ -274,12 +275,48 @@ input.search-task:focus {
    outline: none;
 }
 
+.loader {
+   width: 48px;
+   height: 48px;
+   border: 5px solid black;
+   border-bottom-color: transparent;
+   border-radius: 50%;
+   display: inline-block;
+   box-sizing: border-box;
+   animation: rotation 1s linear infinite;
+   position: absolute;
+   top: 50%;
+   left: 50%;
+
+
+}
+
 /* 
-.tasks-item__btn-marker_imp {
-   border-radius: 25px;
-   width: 183px;
-   height: 36px;
-   background: rgba(255, 255, 255, 0.08);
-   border: #1ac97d;
-   outline: none;
+.tasks-wrapper {
+   position: relative;
 } */
+
+.loader-wrapper {
+   top: 0;
+   right: 0;
+   left: 0;
+   bottom: 0;
+   background: #11111155;
+   position: absolute;
+
+}
+
+.loader-wrapper_hidden {
+   display: none;
+
+}
+
+@keyframes rotation {
+   0% {
+      transform: rotate(0deg);
+   }
+
+   100% {
+      transform: rotate(360deg);
+   }
+}
